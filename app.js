@@ -4,6 +4,12 @@ const port = 3000;
 
 app.use(express.static("public"));
 
+app.use(
+  express.json({
+    limit: "50mb",
+  })
+);
+
 app.use(function (err, req, res, next) {
   res.status(500).json({ statusCode: res.statusCode, errMessage: err.message }); // 상태코드, 에러 메시지 전달
 });
